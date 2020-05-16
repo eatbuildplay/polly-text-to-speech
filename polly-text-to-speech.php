@@ -26,35 +26,18 @@ class Plugin {
     require_once(POLLY_TTS_PATH.'vendor/aws/aws-autoloader.php');
     require_once(POLLY_TTS_PATH.'src/Polly.php');
     require_once(POLLY_TTS_PATH.'src/FileStorage.php');
-
     require_once(POLLY_TTS_PATH.'src/Template.php');
     require_once(POLLY_TTS_PATH.'src/Shortcode.php');
-
     require_once(POLLY_TTS_PATH.'src/PostType.php');
     require_once(POLLY_TTS_PATH.'src/TextConversionPostType.php');
-
+    require_once(POLLY_TTS_PATH.'src/models/Settings.php');
     require_once(POLLY_TTS_PATH.'src/models/TextConversion.php');
-
     require_once(POLLY_TTS_PATH.'src/SpeechShortcode.php');
-
 
     new ShortcodeSpeech();
 
-    /*
-
-      // make and save an MP3 file
-
-      $polly = new Polly();
-      $pollyResponse = $polly->synth();
-
-      $fs = new FileStorage;
-      $fs->save( $pollyResponse );
-
-    */
-
     // post type init
     add_action('init', [$this, 'cptRegister']);
-
     add_action('init', [$this, 'optionsPages'], 20);
 
     add_action('acf/save_post', [$this, 'optionSave'], 20);
@@ -76,7 +59,7 @@ class Plugin {
     }
 
     $messageText = '<figure>
-      <figcaption>Listen to the T-Rex:</figcaption>
+      <figcaption>Listen:</figcaption>
       <audio
         controls
         src="' . $url . '">
@@ -108,7 +91,7 @@ class Plugin {
     $save = $fs->save( $pollyResponse );
 
     if( $save ) {
-      //$notice = '<pre>' . print_r($save,1) . '</pre>';
+
       $notice = $save['ObjectURL'];
 
       // save text_conversion post
@@ -116,9 +99,11 @@ class Plugin {
       $tc->s3url = $save['ObjectURL'];
       $tc->save();
 
+      update_option('polly_notice', $notice);
+
     }
 
-    update_option('polly_notice', $notice);
+
 
   }
 
@@ -142,10 +127,9 @@ class Plugin {
     		'parent_slug'	=> 'polly',
     	));
 
-
       \acf_add_options_sub_page(array(
-    		'page_title' 	=> 'AWS Credentials',
-    		'menu_title'	=> 'AWS Credentials',
+    		'page_title' 	=> 'Settings',
+    		'menu_title'	=> 'Settings',
     		'parent_slug'	=> 'polly',
     	));
 

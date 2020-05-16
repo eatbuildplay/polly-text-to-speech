@@ -10,11 +10,10 @@ class Polly {
 
   public function __construct() {
 
-    $this->accessId   = 'AKIAU4ANHID7VOOJKIBA';
-    $this->secretKey  = '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';
+    $settings = new Model\Settings();
     $this->credentials = new \Aws\Credentials\Credentials(
-      $this->accessId,
-      $this->secretKey
+      $settings->awsAccessId,
+      $settings->awsSecretKey
     );
 
   }

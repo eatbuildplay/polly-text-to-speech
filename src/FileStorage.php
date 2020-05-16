@@ -4,34 +4,34 @@ namespace Polly;
 
 class FileStorage {
 
+  public $awsCredentials;
+
   public function __construct() {
 
-    $this->accessId   = 'AKIAU4ANHID7VOOJKIBA';
-    $this->secretKey  = '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';
+    $settings = new Model\Settings();
     $this->credentials = new \Aws\Credentials\Credentials(
-      $this->accessId,
-      $this->secretKey
+      $settings->awsAccessId,
+      $settings->awsSecretKey
     );
 
   }
 
   public function save( $pollyResponse ) {
 
-    $s3bucket = 's10audio';
-    $s3region = 'us-east-2';
+    $settings = new Model\Settings();
 
     $filename = time().'-polly.mp3';
     $client_s3 = new \Aws\S3\S3Client([
       'version' => 'latest',
       'credentials' => $this->credentials,
-      'region' => $s3region
+      'region' => $settings->s3BucketRegion
     ]);
 
     $result_s3 = $client_s3->putObject([
       'Key'     => $filename,
       'ACL'     => 'public-read',
       'Body'    => $pollyResponse,
-      'Bucket'  => $s3bucket,
+      'Bucket'  => $settings->s3BucketName,
       'ContentType' => 'audio/mpeg'
     ]);
 
