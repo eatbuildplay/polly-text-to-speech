@@ -27,12 +27,51 @@ class Plugin {
     require_once(POLLY_TTS_PATH.'src/Polly.php');
     require_once(POLLY_TTS_PATH.'src/FileStorage.php');
 
-    $polly = new Polly();
-    $pollyResponse = $polly->synth();
+    /*
 
-    $fs = new FileStorage;
-    $fs->save( $pollyResponse );
-    
+      // make and save an MP3 file
+
+      $polly = new Polly();
+      $pollyResponse = $polly->synth();
+
+      $fs = new FileStorage;
+      $fs->save( $pollyResponse );
+
+    */
+
+    add_action('init', [$this, 'optionsPages'], 20);
+
+  }
+
+  public function optionsPages() {
+
+    if( function_exists('\acf_add_options_page') ) {
+
+      // main dashboard
+      \acf_add_options_page(array(
+    		'page_title' 	=> 'Polly TTS',
+    		'menu_title'	=> 'Polly TTS',
+    		'menu_slug' 	=> 'polly',
+    		'capability'	=> 'edit_posts',
+    		'redirect'		=> false
+    	));
+
+      // convert text
+      \acf_add_options_sub_page(array(
+    		'page_title' 	=> 'Convert Text',
+    		'menu_title'	=> 'Convert Text',
+    		'parent_slug'	=> 'polly',
+    	));
+
+
+      \acf_add_options_sub_page(array(
+    		'page_title' 	=> 'AWS Credentials',
+    		'menu_title'	=> 'AWS Credentials',
+    		'parent_slug'	=> 'polly',
+    	));
+
+    }
+
   }
 
 }
