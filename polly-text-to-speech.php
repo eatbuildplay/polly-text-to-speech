@@ -27,6 +27,16 @@ class Plugin {
     require_once(POLLY_TTS_PATH.'src/Polly.php');
     require_once(POLLY_TTS_PATH.'src/FileStorage.php');
 
+    require_once(POLLY_TTS_PATH.'src/Template.php');
+    require_once(POLLY_TTS_PATH.'src/Shortcode.php');
+
+    require_once(POLLY_TTS_PATH.'src/PostType.php');
+    require_once(POLLY_TTS_PATH.'src/TextConversionPostType.php');
+
+    require_once(POLLY_TTS_PATH.'src/models/TextConversion.php');
+
+    require_once(POLLY_TTS_PATH.'src/SpeechShortcode.php');
+
     /*
 
       // make and save an MP3 file
@@ -39,12 +49,19 @@ class Plugin {
 
     */
 
-    add_action('init', [$this, 'optionsPages'], 20);
+    // post type init
+    add_action('init', [$this, 'cptRegister']);
 
+    add_action('init', [$this, 'optionsPages'], 20);
 
     add_action('acf/save_post', [$this, 'optionSave'], 20);
     add_action('admin_notices', [$this, 'adminNotices']);
 
+  }
+
+  public function cptRegister() {
+    $pt = new TextConversionPostType();
+    $pt->register();
   }
 
   public function adminNotices() {
@@ -90,6 +107,12 @@ class Plugin {
     if( $save ) {
       //$notice = '<pre>' . print_r($save,1) . '</pre>';
       $notice = $save['ObjectURL'];
+
+      // save text_conversion post
+      $tc = new Model\TextConversion;
+      $tc->s3url = $save['ObjectURL'];
+      $tc->save();
+
     }
 
     update_option('polly_notice', $notice);
