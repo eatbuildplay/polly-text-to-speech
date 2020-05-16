@@ -35,6 +35,8 @@ class FileStorage {
       'ContentType' => 'audio/mpeg'
     ]);
 
+    return $result_s3;
+
   }
 
 }

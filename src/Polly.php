@@ -19,7 +19,7 @@ class Polly {
 
   }
 
-  public function synth() {
+  public function synth( $text ) {
 
     $client = new \Aws\Polly\PollyClient([
       'version' => '2016-06-10',
@@ -30,7 +30,7 @@ class Polly {
     $result = $client->synthesizeSpeech(
       [
         'OutputFormat' => 'mp3',
-        'Text' => "Hello how are you?",
+        'Text' => $text,
         'TextType' => 'text',
         'VoiceId' => 'Amy'
       ]

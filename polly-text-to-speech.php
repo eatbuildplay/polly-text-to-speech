@@ -41,6 +41,59 @@ class Plugin {
 
     add_action('init', [$this, 'optionsPages'], 20);
 
+
+    add_action('acf/save_post', [$this, 'optionSave'], 20);
+    add_action('admin_notices', [$this, 'adminNotices']);
+
+  }
+
+  public function adminNotices() {
+
+    $url = get_option('polly_notice', false);
+
+    if( !$url ) {
+      return;
+    }
+
+    $messageText = '<figure>
+      <figcaption>Listen to the T-Rex:</figcaption>
+      <audio
+        controls
+        src="' . $url . '">
+            Your browser does not support the
+            <code>audio</code> element.
+      </audio>
+    </figure>';
+
+    $class = 'notice notice-success';
+    $message = __( $messageText, 'polly' );
+    printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message );
+    delete_option('polly_notice');
+
+  }
+
+  public function optionSave() {
+
+    $screen = get_current_screen();
+    if (strpos($screen->id, "acf-options-convert-text") != true) {
+      return;
+    }
+
+    $text = get_option('options_text');
+
+    $polly = new Polly();
+    $pollyResponse = $polly->synth( $text );
+
+    $fs = new FileStorage;
+    $save = $fs->save( $pollyResponse );
+
+    if( $save ) {
+      //$notice = '<pre>' . print_r($save,1) . '</pre>';
+      $notice = $save['ObjectURL'];
+    }
+
+    update_option('polly_notice', $notice);
+
   }
 
   public function optionsPages() {
