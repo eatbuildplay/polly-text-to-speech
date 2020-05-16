@@ -8,10 +8,19 @@ class ShortcodeSpeech extends Shortcode {
 
   public function __construct() {
     $this->templateName = 'speech';
-    $this->templateData = [
-      'url' => 'https://s10audio.s3.us-east-2.amazonaws.com/1589641833-polly.mp3'
-    ];
     parent::__construct();
+  }
+
+  public function loadData( $atts ) {
+
+    $id = $atts['id'];
+    $post = get_post( $id );
+    $url = get_field('s3_url', $id);
+
+    return [
+      'label' => $post->post_title,
+      'url' => $url
+    ];
   }
 
 }

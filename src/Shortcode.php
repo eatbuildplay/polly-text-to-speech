@@ -17,17 +17,20 @@ class Shortcode {
 
   public function doShortcode( $atts ) {
 
-    $atts = shortcode_atts( array(), $atts, $this->tag );
-
+    $atts = shortcode_atts(
+      array('id' => 0), 
+      $atts,
+      $this->tag
+    );
     $template = new Template();
     $template->path = $this->templatePath;
     $template->name = $this->templateName;
-    $template->data = $this->loadData();
+    $template->data = $this->loadData($atts);
     return $template->get();
 
   }
 
-  public function loadData() {
+  public function loadData($atts) {
     return [];
   }
 

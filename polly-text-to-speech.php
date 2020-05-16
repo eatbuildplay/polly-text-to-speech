@@ -37,6 +37,9 @@ class Plugin {
 
     require_once(POLLY_TTS_PATH.'src/SpeechShortcode.php');
 
+
+    new ShortcodeSpeech();
+
     /*
 
       // make and save an MP3 file

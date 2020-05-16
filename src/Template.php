@@ -17,7 +17,7 @@ class Template {
       extract( $this->data );
     }
     ob_start();
-    require( ESPORTSY_PATH . $this->path . $this->name . '.php' );
+    require( POLLY_TTS_PATH . $this->path . $this->name . '.php' );
     $content = ob_get_contents();
     ob_end_clean();
     return $content;
