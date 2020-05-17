@@ -18,6 +18,8 @@ class LocalStorage {
     $file = $uploadDir . '/test123.mp3';
     file_put_contents($file, $fileContents);
 
+    return $file;
+
   }
 
   public function getUploadDir() {

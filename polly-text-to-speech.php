@@ -34,6 +34,7 @@ class Plugin {
     require_once(POLLY_TTS_PATH.'src/models/TextConversion.php');
     require_once(POLLY_TTS_PATH.'src/SpeechShortcode.php');
     require_once(POLLY_TTS_PATH.'src/controllers/LocalStorage.php');
+    require_once(POLLY_TTS_PATH.'src/controllers/MediaLibrary.php');
 
     new ShortcodeSpeech();
 
@@ -94,7 +95,11 @@ class Plugin {
 
     // local server storage
     $ls = new Controller\LocalStorage;
-    $ls->save( $pollyResponse );
+    $file = $ls->save( $pollyResponse );
+
+    // media library attach
+    $ml = new Controller\MediaLibrary( $file );
+    $ml->save( $pollyResponse );
 
     if( $save ) {
 
