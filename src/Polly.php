@@ -30,11 +30,15 @@ class Polly {
     $engine = 'standard';
     $engine = apply_filters( 'polly_engine', $engine, $voiceId, $text );
 
+    // default TextType and filter TextType
+    $textType = 'text';
+    $textType = apply_filters( 'polly_text_type', $textType, $voiceId, $text );
+
     // make options and do call to Polly
     $pollyOptions = [
       'Engine'        => $engine,
       'OutputFormat'  => 'mp3',
-      'TextType'      => 'text',
+      'TextType'      => $textType,
       'Text'          => $text,
       'VoiceId'       => $voiceId
     ];
