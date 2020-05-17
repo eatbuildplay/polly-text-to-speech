@@ -39,11 +39,28 @@ class Plugin {
     new ShortcodeSpeech();
 
     // post type init
+    add_action('init', [$this, 'loadFields']);
     add_action('init', [$this, 'cptRegister']);
     add_action('init', [$this, 'optionsPages'], 20);
 
     add_action('acf/save_post', [$this, 'optionSave'], 20);
     add_action('admin_notices', [$this, 'adminNotices']);
+
+  }
+
+  public function loadFields() {
+
+    $voiceList = [
+      'Joanna' => 'Joanna (English US / Female)',
+      'Kendra' => 'Kendra (English US / Female)',
+      'Kimberly' => 'Kimberly (English US / Female)',
+      'Salli' => 'Salli (English US / Female)',
+      'Joey' => 'Joey (English US / Male)',
+      'Matthew' => 'Matthew (English US / Male)',
+    ];
+    $voiceList = apply_filters('polly_voice_list', $voiceList);
+
+    require_once(POLLY_TTS_PATH.'fields/convert_text.php');
 
   }
 

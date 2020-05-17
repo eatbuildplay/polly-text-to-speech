@@ -1,0 +1,116 @@
+[
+    {
+        "key": "group_5ebfd3c6bf333",
+        "title": "Polly Convert Text",
+        "fields": [
+            {
+                "key": "field_5ebfd3d9d5369",
+                "label": "Text",
+                "name": "text",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "new_lines": "",
+                "maxlength": "",
+                "placeholder": "",
+                "rows": ""
+            },
+            {
+                "key": "field_5ec0af94dad5e",
+                "label": "Voice",
+                "name": "voice_id",
+                "type": "radio",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "Joanna": "Joanna (English US \/ Female)",
+                    "Kendra": "Kendra (English US \/ Female)",
+                    "Kimberly": "Kimberly (English US \/ Female)",
+                    "Salli": "Salli (English US \/ Female)",
+                    "Joey": "Joey (English US \/ Male)",
+                    "Matthew": "Matthew (English US \/ Male)"
+                },
+                "allow_null": 0,
+                "other_choice": 0,
+                "default_value": "Joanna",
+                "layout": "horizontal",
+                "return_format": "value",
+                "save_other_choice": 0
+            },
+            {
+                "key": "field_5ebfd3e1d536a",
+                "label": "File Storage",
+                "name": "file_storage",
+                "type": "button_group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "s3": "S3 Bucket",
+                    "server": "Server"
+                },
+                "allow_null": 0,
+                "default_value": "",
+                "layout": "horizontal",
+                "return_format": "value"
+            },
+            {
+                "key": "field_5ec0a0089b48f",
+                "label": "Media Library Import",
+                "name": "media_library_import",
+                "type": "button_group",
+                "instructions": "This option will add the speech audio file to the WP Media Library.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": [
+                    "No",
+                    "Yes"
+                ],
+                "allow_null": 0,
+                "default_value": 1,
+                "layout": "horizontal",
+                "return_format": "value"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "acf-options-convert-text"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "seamless",
+        "label_placement": "left",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    }
+]
