@@ -85,9 +85,10 @@ class Plugin {
     }
 
     $text = get_option('options_text');
+    $voiceId = get_option('options_voice_id');
 
     $polly = new Polly();
-    $pollyResponse = $polly->synth( $text );
+    $pollyResponse = $polly->synth( $text, $voiceId );
 
     // s3 file storage
     $fs = new FileStorage;
