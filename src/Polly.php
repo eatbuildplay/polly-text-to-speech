@@ -26,18 +26,20 @@ class Polly {
       'region' => 'us-east-1'
     ]);
 
-    $result = $client->synthesizeSpeech(
-      [
-        'Engine'        => 'standard',
-        'OutputFormat'  => 'mp3',
-        'TextType'      => 'text',
-        'Text'          => $text,
-        'VoiceId'       => $voiceId
-      ]
-    );
+    // default engine and filter engine
+    $engine = 'standard';
+    $engine = apply_filters( 'polly_engine', $engine, $voiceId, $text );
 
+    // make options and do call to Polly
+    $pollyOptions = [
+      'Engine'        => $engine,
+      'OutputFormat'  => 'mp3',
+      'TextType'      => 'text',
+      'Text'          => $text,
+      'VoiceId'       => $voiceId
+    ];
+    $result = $client->synthesizeSpeech( $pollyOptions );
     $resultData = $result->get('AudioStream')->getContents();
-
     return $resultData;
 
   }
