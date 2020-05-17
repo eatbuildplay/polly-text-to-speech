@@ -127,6 +127,15 @@ class Plugin {
     		'parent_slug'	=> 'polly',
     	));
 
+      // text conversions
+      \add_submenu_page(
+        'polly',
+        'Text Conversions',
+        'Text Conversions',
+        'edit_posts',
+        'edit.php?post_type=text_conversion'
+      );
+
       \acf_add_options_sub_page(array(
     		'page_title' 	=> 'Settings',
     		'menu_title'	=> 'Settings',

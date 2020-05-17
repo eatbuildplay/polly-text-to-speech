@@ -12,10 +12,11 @@ class TextConversion {
 
     $args = [
       'post_type'  => 'text_conversion',
-      'post_title' => time()
+      'post_title' => time(),
+      'post_status' => 'publish'
     ];
-    $postId = wp_insert_post($args);
-    update_post_meta( $postId, 's3_url', $this->s3url );
+    $postId = \wp_insert_post($args);
+    \update_post_meta( $postId, 's3_url', $this->s3url );
 
   }
 
