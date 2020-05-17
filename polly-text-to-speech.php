@@ -33,6 +33,7 @@ class Plugin {
     require_once(POLLY_TTS_PATH.'src/models/Settings.php');
     require_once(POLLY_TTS_PATH.'src/models/TextConversion.php');
     require_once(POLLY_TTS_PATH.'src/SpeechShortcode.php');
+    require_once(POLLY_TTS_PATH.'src/controllers/LocalStorage.php');
 
     new ShortcodeSpeech();
 
@@ -87,8 +88,13 @@ class Plugin {
     $polly = new Polly();
     $pollyResponse = $polly->synth( $text );
 
+    // s3 file storage
     $fs = new FileStorage;
     $save = $fs->save( $pollyResponse );
+
+    // local server storage
+    $ls = new Controller\LocalStorage;
+    $ls->save( $pollyResponse );
 
     if( $save ) {
 
