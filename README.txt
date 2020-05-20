@@ -5,7 +5,7 @@ Donate link: https://eatbuildplay.com/donate/
 Requires at least: 5.0
 Tested up to: 5.4
 Requires PHP: 7.3
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -50,8 +50,12 @@ We provide only a limited selection of voices in the free Polly TTS plugin, to u
 1. Convert Text Page
 
 == Changelog ==
+
+= 1.0.1 =
+Include readme and improvements to the button text and update message for the convert text page.
+
 = 1.0.1 =
 Include exports of the ACF Field Groups.
 
 == Upgrade Notice ==
-No upgrade notice is available at this time due to Polly TTS being a new plugin. 
+No upgrade notice is available at this time due to Polly TTS being a new plugin.
