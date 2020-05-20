@@ -157,6 +157,7 @@ class Plugin {
     		'page_title' 	=> 'Polly TTS',
     		'menu_title'	=> 'Polly TTS',
     		'menu_slug' 	=> 'polly',
+        'icon_url'   => 'dashicons-format-chat',
     		'capability'	=> 'edit_posts',
     		'redirect'		=> false
     	));

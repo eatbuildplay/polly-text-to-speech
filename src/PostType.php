@@ -7,6 +7,7 @@ class PostType {
   public $settings = [];
   public $showInMenu = true;
   public $menuPosition = 10;
+  public $menuIcon = 'dashicons-welcome-add-page';
 
   public function getKey() {
     return 'frame';
@@ -58,6 +59,7 @@ class PostType {
   		'show_ui'               => true,
   		'show_in_menu'          => $this->showInMenu,
   		'menu_position'         => $this->menuPosition,
+      'menu_icon'             => $this->menuIcon,
   		'show_in_admin_bar'     => true,
   		'show_in_nav_menus'     => true,
   		'can_export'            => true,
