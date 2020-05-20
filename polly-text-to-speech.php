@@ -5,7 +5,7 @@
  * Plugin Name: Polly Text-to-Speech
  * Plugin URI: https://eatbuildplay.com/plugins/polly-text-to-speech/
  * Description: Provides integration of AWS Polly text-to-speech service.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Casey Milne, Eat/Build/Play
  * Author URI: https://eatbuildplay.com/
  * License: GPL3
@@ -17,7 +17,7 @@ namespace Polly;
 
 define( 'POLLY_TTS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'POLLY_TTS_URL', plugin_dir_url( __FILE__ ) );
-define( 'POLLY_TTS_VERSION', '1.0.0' );
+define( 'POLLY_TTS_VERSION', '1.0.1' );
 
 class Plugin {
 
@@ -61,6 +61,8 @@ class Plugin {
     $voiceList = apply_filters('polly_voice_list', $voiceList);
 
     require_once(POLLY_TTS_PATH.'fields/convert_text.php');
+    require_once(POLLY_TTS_PATH.'fields/text_conversion.php');
+    require_once(POLLY_TTS_PATH.'fields/settings.php');
 
   }
 
