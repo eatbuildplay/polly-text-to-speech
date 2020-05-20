@@ -166,6 +166,8 @@ class Plugin {
       \acf_add_options_sub_page(array(
     		'page_title' 	=> 'Convert Text',
     		'menu_title'	=> 'Convert Text',
+        'update_button' => __('Convert Text', 'polly'),
+        'updated_message' => __('Text Converted Successfully', 'polly'),
     		'parent_slug'	=> 'polly',
     	));
 
