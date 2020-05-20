@@ -2,7 +2,7 @@
 
 namespace Polly;
 
-class FileStorage {
+class S3Storage {
 
   public $awsCredentials;
 
@@ -35,7 +35,7 @@ class FileStorage {
       'ContentType' => 'audio/mpeg'
     ]);
 
-    return $result_s3;
+    return $result_s3['ObjectURL'];
 
   }
 

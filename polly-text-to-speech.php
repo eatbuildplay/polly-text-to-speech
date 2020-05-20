@@ -25,7 +25,6 @@ class Plugin {
 
     require_once(POLLY_TTS_PATH.'vendor/aws/aws-autoloader.php');
     require_once(POLLY_TTS_PATH.'src/Polly.php');
-    require_once(POLLY_TTS_PATH.'src/FileStorage.php');
     require_once(POLLY_TTS_PATH.'src/Template.php');
     require_once(POLLY_TTS_PATH.'src/Shortcode.php');
     require_once(POLLY_TTS_PATH.'src/PostType.php');
@@ -33,6 +32,7 @@ class Plugin {
     require_once(POLLY_TTS_PATH.'src/models/Settings.php');
     require_once(POLLY_TTS_PATH.'src/models/TextConversion.php');
     require_once(POLLY_TTS_PATH.'src/SpeechShortcode.php');
+    require_once(POLLY_TTS_PATH.'src/controllers/S3Storage.php');
     require_once(POLLY_TTS_PATH.'src/controllers/LocalStorage.php');
     require_once(POLLY_TTS_PATH.'src/controllers/MediaLibrary.php');
 
@@ -65,8 +65,10 @@ class Plugin {
   }
 
   public function cptRegister() {
+
     $pt = new TextConversionPostType();
     $pt->register();
+
   }
 
   public function adminNotices() {
@@ -107,32 +109,40 @@ class Plugin {
     $polly = new Polly();
     $pollyResponse = $polly->synth( $text, $voiceId );
 
+    $fileStorageSetting = get_option('options_file_storage');
+
     // s3 file storage
-    $fs = new FileStorage;
-    $save = $fs->save( $pollyResponse );
+    if( $fileStorageSetting == 's3') {
+      $fs = new S3Storage;
+      $fileUrl = $fs->save( $pollyResponse );
+    }
 
     // local server storage
-    $ls = new Controller\LocalStorage;
-    $file = $ls->save( $pollyResponse );
+    if( $fileStorageSetting == 'server') {
+      $ls = new Controller\LocalStorage;
+      $fileUrl = $ls->save( $pollyResponse );
+    }
 
-    // media library attach
-    $ml = new Controller\MediaLibrary( $file );
-    $ml->save( $pollyResponse );
+    if( $fileUrl ) {
 
-    if( $save ) {
+      // media library attach
+      $mediaLibraryImportSetting = get_option('options_media_library_import');
 
-      $notice = $save['ObjectURL'];
+      if( $mediaLibraryImportSetting == 1 ) {
+        $ml = new Controller\MediaLibrary( $fileUrl );
+        $ml->save();
+      }
 
       // save text_conversion post
       $tc = new Model\TextConversion;
-      $tc->s3url = $save['ObjectURL'];
+      $tc->url = $fileUrl;
       $tc->save();
 
+      // setup for showing notice to user
+      $notice = $fileUrl;
       update_option('polly_notice', $notice);
 
     }
-
-
 
   }
 

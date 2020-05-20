@@ -6,7 +6,7 @@ class TextConversion {
 
   public $id;
   public $title;
-  public $s3url;
+  public $url;
 
   public function save() {
 
@@ -16,7 +16,7 @@ class TextConversion {
       'post_status' => 'publish'
     ];
     $postId = \wp_insert_post($args);
-    \update_post_meta( $postId, 's3_url', $this->s3url );
+    \update_post_meta( $postId, 'url', $this->url );
 
   }
 

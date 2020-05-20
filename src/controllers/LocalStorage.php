@@ -14,11 +14,14 @@ class LocalStorage {
     }
 
     // save file
-    $uploadDir = $this->getUploadDir();
-    $file = $uploadDir . '/test123.mp3';
+    $uploadDir = $this->getUploadDir() . '/';
+    $filename = time() . '-polly.mp3';
+    $file = $uploadDir . $filename;
     file_put_contents($file, $fileContents);
 
-    return $file;
+    $fileUrl = WP_CONTENT_URL . '/uploads/polly/' . $filename;
+
+    return $fileUrl;
 
   }
 
