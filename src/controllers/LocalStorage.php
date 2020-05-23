@@ -1,6 +1,6 @@
 <?php
 
-namespace Polly\Controller;
+namespace SaberTTS\Controller;
 
 class LocalStorage {
 

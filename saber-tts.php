@@ -115,7 +115,7 @@ class Plugin {
 
     // s3 file storage
     if( $fileStorageSetting == 's3') {
-      $fs = new S3Storage;
+      $fs = new Controller\S3Storage;
       $fileUrl = $fs->save( $pollyResponse );
     }
 

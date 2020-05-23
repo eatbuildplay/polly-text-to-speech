@@ -1,6 +1,6 @@
 <?php
 
-namespace SaberTTS;
+namespace SaberTTS\Controller;
 
 class S3Storage {
 
@@ -8,7 +8,7 @@ class S3Storage {
 
   public function __construct() {
 
-    $settings = new Model\Settings();
+    $settings = new \SaberTTS\Model\Settings();
     $this->credentials = new \Aws\Credentials\Credentials(
       $settings->awsAccessId,
       $settings->awsSecretKey
@@ -18,7 +18,7 @@ class S3Storage {
 
   public function save( $pollyResponse ) {
 
-    $settings = new Model\Settings();
+    $settings = new \SaberTTS\Model\Settings();
 
     $filename = time().'-polly.mp3';
     $client_s3 = new \Aws\S3\S3Client([
