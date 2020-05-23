@@ -2,10 +2,10 @@
 
 /**
  *
- * Plugin Name: Polly Text-to-Speech
- * Plugin URI: https://eatbuildplay.com/plugins/polly-text-to-speech/
- * Description: Provides integration of AWS Polly text-to-speech service.
- * Version: 1.0.2
+ * Plugin Name: Saber TTS
+ * Plugin URI: https://eatbuildplay.com/plugins/saber-tts/
+ * Description: Provides text-to-speech services with integration of AWS Polly text-to-speech service.
+ * Version: 1.1.0
  * Author: Casey Milne, Eat/Build/Play
  * Author URI: https://eatbuildplay.com/
  * License: GPL3
@@ -13,28 +13,28 @@
  *
  */
 
-namespace Polly;
+namespace SaberTTS;
 
-define( 'POLLY_TTS_PATH', plugin_dir_path( __FILE__ ) );
-define( 'POLLY_TTS_URL', plugin_dir_url( __FILE__ ) );
-define( 'POLLY_TTS_VERSION', '1.0.2' );
+define( 'SABER_TTS_PATH', plugin_dir_path( __FILE__ ) );
+define( 'SABER_TTS_URL', plugin_dir_url( __FILE__ ) );
+define( 'SABER_TTS_VERSION', '1.0.2' );
 
 class Plugin {
 
   public function __construct() {
 
-    require_once(POLLY_TTS_PATH.'vendor/aws/aws-autoloader.php');
-    require_once(POLLY_TTS_PATH.'src/Polly.php');
-    require_once(POLLY_TTS_PATH.'src/Template.php');
-    require_once(POLLY_TTS_PATH.'src/Shortcode.php');
-    require_once(POLLY_TTS_PATH.'src/PostType.php');
-    require_once(POLLY_TTS_PATH.'src/TextConversionPostType.php');
-    require_once(POLLY_TTS_PATH.'src/models/Settings.php');
-    require_once(POLLY_TTS_PATH.'src/models/TextConversion.php');
-    require_once(POLLY_TTS_PATH.'src/SpeechShortcode.php');
-    require_once(POLLY_TTS_PATH.'src/controllers/S3Storage.php');
-    require_once(POLLY_TTS_PATH.'src/controllers/LocalStorage.php');
-    require_once(POLLY_TTS_PATH.'src/controllers/MediaLibrary.php');
+    require_once(SABER_TTS_PATH.'vendor/aws/aws-autoloader.php');
+    require_once(SABER_TTS_PATH.'src/Polly.php');
+    require_once(SABER_TTS_PATH.'src/Template.php');
+    require_once(SABER_TTS_PATH.'src/Shortcode.php');
+    require_once(SABER_TTS_PATH.'src/PostType.php');
+    require_once(SABER_TTS_PATH.'src/TextConversionPostType.php');
+    require_once(SABER_TTS_PATH.'src/models/Settings.php');
+    require_once(SABER_TTS_PATH.'src/models/TextConversion.php');
+    require_once(SABER_TTS_PATH.'src/SpeechShortcode.php');
+    require_once(SABER_TTS_PATH.'src/controllers/S3Storage.php');
+    require_once(SABER_TTS_PATH.'src/controllers/LocalStorage.php');
+    require_once(SABER_TTS_PATH.'src/controllers/MediaLibrary.php');
 
     new ShortcodeSpeech();
 
@@ -60,9 +60,9 @@ class Plugin {
     ];
     $voiceList = apply_filters('polly_voice_list', $voiceList);
 
-    require_once(POLLY_TTS_PATH.'fields/convert_text.php');
-    require_once(POLLY_TTS_PATH.'fields/text_conversion.php');
-    require_once(POLLY_TTS_PATH.'fields/settings.php');
+    require_once(SABER_TTS_PATH.'fields/convert_text.php');
+    require_once(SABER_TTS_PATH.'fields/text_conversion.php');
+    require_once(SABER_TTS_PATH.'fields/settings.php');
 
   }
 
@@ -154,9 +154,9 @@ class Plugin {
 
       // main dashboard
       \acf_add_options_page(array(
-    		'page_title' 	=> 'Polly TTS',
-    		'menu_title'	=> 'Polly TTS',
-    		'menu_slug' 	=> 'polly',
+    		'page_title' 	=> 'Saber TTS',
+    		'menu_title'	=> 'Saber TTS',
+    		'menu_slug' 	=> 'saber',
         'icon_url'   => 'dashicons-format-chat',
     		'capability'	=> 'edit_posts',
     		'redirect'		=> false
@@ -168,12 +168,12 @@ class Plugin {
     		'menu_title'	=> 'Convert Text',
         'update_button' => __('Convert Text', 'polly'),
         'updated_message' => __('Text Converted Successfully', 'polly'),
-    		'parent_slug'	=> 'polly',
+    		'parent_slug'	=> 'saber',
     	));
 
       // text conversions
       \add_submenu_page(
-        'polly',
+        'saber',
         'Text Conversions',
         'Text Conversions',
         'edit_posts',
@@ -183,7 +183,7 @@ class Plugin {
       \acf_add_options_sub_page(array(
     		'page_title' 	=> 'Settings',
     		'menu_title'	=> 'Settings',
-    		'parent_slug'	=> 'polly',
+    		'parent_slug'	=> 'saber',
     	));
 
     }

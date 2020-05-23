@@ -1,10 +1,10 @@
 <?php
 
-namespace Polly;
+namespace SaberTTS;
 
 class ShortcodeSpeech extends Shortcode {
 
-  public $tag = 'polly-speech';
+  public $tag = 'saber-speech';
 
   public function __construct() {
     $this->templateName = 'speech';

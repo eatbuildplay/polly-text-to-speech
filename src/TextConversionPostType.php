@@ -1,6 +1,6 @@
 <?php
 
-namespace Polly;
+namespace SaberTTS;
 
 class TextConversionPostType extends PostType {
 

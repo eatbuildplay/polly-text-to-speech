@@ -1,6 +1,6 @@
 <?php
 
-namespace Polly;
+namespace SaberTTS;
 
 class PostType {
 
@@ -32,14 +32,6 @@ class PostType {
 
     $key = $this->getKey();
     $settings = $this->getSettings();
-
-    /*
-    print '<pre>';
-    var_dump( $key );
-    var_dump( $settings );
-    print '</pre>';
-    die();
-    */
 
     register_post_type( $key, $settings );
 

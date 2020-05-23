@@ -4,7 +4,7 @@ namespace Polly\Controller;
 
 class LocalStorage {
 
-  public $dir = 'polly';
+  public $dir = 'saber';
 
   public function save( $fileContents ) {
 

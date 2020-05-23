@@ -1,6 +1,6 @@
 <?php
 
-namespace Polly\Model;
+namespace SaberTTS\Model;
 
 class Settings {
 
