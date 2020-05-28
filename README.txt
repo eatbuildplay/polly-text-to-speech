@@ -1,4 +1,4 @@
-=== Polly Text-to-Speech ===
+=== Saber TTS (Text-to-Speech) ===
 Contributors: eatbuildplay
 Tags: polly, aws, text-to-speech, tts
 Donate link: https://eatbuildplay.com/donate/
@@ -12,7 +12,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Provides integration of AWS Polly text-to-speech service. Requires an AWS Cloud account with API credentials and the ACF Pro plugin.
 
 == Description ==
-Integrates AWS Saber TTS (text-to-speech) API service. Enables rapid text-to-speech conversion in the WP Admin with an easy-to-use interface built on ACF Pro. Outputs MP3 audio files that can be stored either in an S3 bucket or on your server. Has an option to import to the WP Media library for convenient future access to the speech file.
+Integrates AWS Polly TTS (text-to-speech) API service. Enables rapid text-to-speech conversion in the WP Admin with an easy-to-use interface built on ACF Pro. Outputs MP3 audio files that can be stored either in an S3 bucket or on your server. Has an option to import to the WP Media library for convenient future access to the speech file.
 
 All conversions completed by Polly are stored as Text Conversion custom post types. This enables you to find your converted audio files easily, and for developers provides a way to query the library of speech conversion files.
 
@@ -51,7 +51,7 @@ We provide only a limited selection of voices in the free Saber TTS plugin, to u
 
 == Changelog ==
 
-= 1.1.0 = 
+= 1.1.0 =
 Changed plugin name to Saber TTS from Polly Text-to-Speech during WP Plugin directory review.
 
 = 1.0.1 =
