@@ -16,7 +16,7 @@ class TextConversion {
       'post_status' => 'publish'
     ];
     $postId = \wp_insert_post($args);
-    \update_post_meta( $postId, 'url', $this->url );
+    update_field( 'url', $this->url, $postId );
 
   }
 

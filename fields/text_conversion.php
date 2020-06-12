@@ -6,8 +6,8 @@ acf_add_local_field_group(array(
 	'fields' => array(
 		array(
 			'key' => 'field_5ebff76548691',
-			'label' => 'S3 Url',
-			'name' => 's3_url',
+			'label' => 'Url',
+			'name' => 'url',
 			'type' => 'url',
 			'instructions' => '',
 			'required' => 0,
