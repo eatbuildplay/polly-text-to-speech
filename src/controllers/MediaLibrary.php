@@ -22,6 +22,7 @@ class MediaLibrary {
       'tmp_name' => $tmp
     );
     $result = media_handle_sideload( $files );
+    return $result;
 
   }
 
