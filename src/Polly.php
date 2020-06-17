@@ -44,6 +44,7 @@ class Polly {
     ];
     $result = $client->synthesizeSpeech( $pollyOptions );
     $resultData = $result->get('AudioStream')->getContents();
+
     return $resultData;
 
   }

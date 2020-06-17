@@ -1,0 +1,284 @@
+[
+    {
+        "key": "group_5ebfd3c6bf333",
+        "title": "Saber TTS Convert Text",
+        "fields": [
+            {
+                "key": "field_5ebfd3d9d5369",
+                "label": "Text",
+                "name": "text",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "new_lines": "",
+                "maxlength": "",
+                "placeholder": "",
+                "rows": ""
+            },
+            {
+                "key": "field_5ec0af94dad5e",
+                "label": "Voice",
+                "name": "voice_id",
+                "type": "radio",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "Joanna": "Joanna (English US \/ Female)",
+                    "Kendra": "Kendra (English US \/ Female)",
+                    "Kimberly": "Kimberly (English US \/ Female)",
+                    "Salli": "Salli (English US \/ Female)",
+                    "Joey": "Joey (English US \/ Male)",
+                    "Matthew": "Matthew (English US \/ Male)"
+                },
+                "allow_null": 0,
+                "other_choice": 0,
+                "default_value": "Joanna",
+                "layout": "horizontal",
+                "return_format": "value",
+                "save_other_choice": 0
+            },
+            {
+                "key": "field_5ebfd3e1d536a",
+                "label": "File Storage",
+                "name": "file_storage",
+                "type": "button_group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "s3": "S3 Bucket",
+                    "server": "Server"
+                },
+                "allow_null": 0,
+                "default_value": "",
+                "layout": "horizontal",
+                "return_format": "value"
+            },
+            {
+                "key": "field_5ec0a0089b48f",
+                "label": "Media Library Import",
+                "name": "media_library_import",
+                "type": "button_group",
+                "instructions": "This option will add the speech audio file to the WP Media Library.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": [
+                    "No",
+                    "Yes"
+                ],
+                "allow_null": 0,
+                "default_value": 1,
+                "layout": "horizontal",
+                "return_format": "value"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "acf-options-convert-text"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "seamless",
+        "label_placement": "left",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    },
+    {
+        "key": "group_5ec05fbb50e17",
+        "title": "Saber TTS Settings",
+        "fields": [
+            {
+                "key": "field_5ec06b69a21ff",
+                "label": "AWS Keys",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5ebfdac46d13d",
+                "label": "Access ID",
+                "name": "aws_access_id",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5ebfdae56d13e",
+                "label": "Secret Key",
+                "name": "aws_secret_key",
+                "type": "password",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_5ec05fd309831",
+                "label": "File Storage",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5ec05fe409832",
+                "label": "S3 Bucket Name",
+                "name": "s3_bucket_name",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5ec05ff409833",
+                "label": "S3 Bucket Region",
+                "name": "s3_bucket_region",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "acf-options-settings"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    },
+    {
+        "key": "group_5ebff754d4d54",
+        "title": "Saber TTS Text Conversion",
+        "fields": [
+            {
+                "key": "field_5ebff76548691",
+                "label": "Url",
+                "name": "url",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "text_conversion"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    }
+]
