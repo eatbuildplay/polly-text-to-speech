@@ -46,6 +46,20 @@ class Plugin {
     add_action('acf/save_post', [$this, 'optionSave'], 20);
     add_action('admin_notices', [$this, 'adminNotices']);
 
+    add_action('admin_menu', function() {
+
+      require_once( SABER_TTS_PATH . 'vendor/saber-core/dashboards/DashboardPage.php');
+      $dashboardPage = new \SaberCore\Dashboards\DashboardPage();
+      $dashboardPage->callback( [$this, 'Test123' ] );
+      $dashboardPage->create();
+
+      require_once( SABER_TTS_PATH . 'vendor/saber-core/settings/SettingsPage.php');
+      $settingsPage = new \SaberCore\Settings\SettingsPage();
+      $settingsPage->callback( [$this, 'Test456' ] );
+      $settingsPage->create();
+
+    });
+
   }
 
   public function loadFields() {
@@ -104,7 +118,7 @@ class Plugin {
       return;
     }
     $screen = \get_current_screen();
-    
+
     if (strpos($screen->id, "acf-options-convert-text") != true) {
       return;
     }
