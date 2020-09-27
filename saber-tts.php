@@ -57,6 +57,9 @@ class Plugin {
 
       require_once( SABER_TTS_PATH . 'vendor/saber-core/dashboards/DashboardPage.php');
       require_once( SABER_TTS_PATH . 'vendor/saber-core/settings/SettingsPage.php');
+      require_once( SABER_TTS_PATH . 'vendor/saber-core/fields/FieldGroup.php');
+      require_once( SABER_TTS_PATH . 'vendor/saber-core/fields/types/FieldType.php');
+      require_once( SABER_TTS_PATH . 'vendor/saber-core/fields/types/Text.php');
 
       // init dashboard page
       $dashboard = new \SaberTTS\Admin\Dashboard();
