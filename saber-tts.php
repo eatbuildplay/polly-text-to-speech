@@ -23,7 +23,14 @@ class Plugin {
 
   public function __construct() {
 
+    /*
+     * Init autoloading
+     */
+    spl_autoload_register([$this, 'autoload']);
+
     require_once(SABER_TTS_PATH.'vendor/aws/aws-autoloader.php');
+
+    // move to autoloader
     require_once(SABER_TTS_PATH.'src/Polly.php');
     require_once(SABER_TTS_PATH.'src/Template.php');
     require_once(SABER_TTS_PATH.'src/Shortcode.php');
@@ -49,16 +56,29 @@ class Plugin {
     add_action('admin_menu', function() {
 
       require_once( SABER_TTS_PATH . 'vendor/saber-core/dashboards/DashboardPage.php');
-      $dashboardPage = new \SaberCore\Dashboards\DashboardPage();
-      $dashboardPage->callback( [$this, 'Test123' ] );
-      $dashboardPage->create();
-
       require_once( SABER_TTS_PATH . 'vendor/saber-core/settings/SettingsPage.php');
-      $settingsPage = new \SaberCore\Settings\SettingsPage();
-      $settingsPage->callback( [$this, 'Test456' ] );
-      $settingsPage->create();
+
+      // init dashboard page
+      $dashboard = new \SaberTTS\Admin\Dashboard();
+      $dashboard->create();
+
+      // init settings page
+      $settings = new \SaberTTS\Admin\Settings();
+      $settings->create();
 
     });
+
+  }
+
+  public function autoload( $className ) {
+
+    if ( 0 !== strpos( $className, 'SaberTTS\Admin' ) ) {
+      return;
+    }
+
+		// strip the namespace leaving only the final class name
+		$className = str_replace('SaberTTS\Admin\\', '', $className);
+		require( SABER_TTS_PATH . 'src/admin/' . $className . '.php' );
 
   }
 
