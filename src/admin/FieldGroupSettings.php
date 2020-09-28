@@ -7,7 +7,8 @@ class FieldGroupSettings extends \SaberCore\Fields\FieldGroup {
   public function fields() {
 
     return [
-      new FieldAccessId()
+      new FieldAccessId(),
+      new FieldKey()
     ];
 
   }

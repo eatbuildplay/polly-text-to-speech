@@ -53,11 +53,15 @@ class Plugin {
     add_action('acf/save_post', [$this, 'optionSave'], 20);
     add_action('admin_notices', [$this, 'adminNotices']);
 
+    // admin form processing
+    require_once( SABER_TTS_PATH . 'vendor/saber-core/fields/FieldGroup.php');
+    add_action('admin_post_saber_form', ['\SaberCore\Fields\FieldGroup', 'process']);
+
+    // setup admin menu
     add_action('admin_menu', function() {
 
       require_once( SABER_TTS_PATH . 'vendor/saber-core/dashboards/DashboardPage.php');
       require_once( SABER_TTS_PATH . 'vendor/saber-core/settings/SettingsPage.php');
-      require_once( SABER_TTS_PATH . 'vendor/saber-core/fields/FieldGroup.php');
       require_once( SABER_TTS_PATH . 'vendor/saber-core/fields/types/FieldType.php');
       require_once( SABER_TTS_PATH . 'vendor/saber-core/fields/types/Text.php');
 
