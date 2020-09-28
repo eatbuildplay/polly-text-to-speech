@@ -13,4 +13,11 @@ class FieldGroupSettings extends \SaberCore\Fields\FieldGroup {
 
   }
 
+  public static function renderField1() {
+
+    $field = new FieldAccessId();
+    $field->render();
+
+  }
+
 }

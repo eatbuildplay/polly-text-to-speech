@@ -54,16 +54,34 @@ class Plugin {
     add_action('admin_notices', [$this, 'adminNotices']);
 
     // admin form processing
-    require_once( SABER_TTS_PATH . 'vendor/saber-core/fields/FieldGroup.php');
+    require_once( SABER_TTS_PATH . 'vendor/saber-core/loader.php');
     add_action('admin_post_saber_form', ['\SaberCore\Fields\FieldGroup', 'process']);
 
     // setup admin menu
     add_action('admin_menu', function() {
 
-      require_once( SABER_TTS_PATH . 'vendor/saber-core/dashboards/DashboardPage.php');
-      require_once( SABER_TTS_PATH . 'vendor/saber-core/settings/SettingsPage.php');
-      require_once( SABER_TTS_PATH . 'vendor/saber-core/fields/types/FieldType.php');
-      require_once( SABER_TTS_PATH . 'vendor/saber-core/fields/types/Text.php');
+      add_settings_section(
+        'general_settings_section',         // ID used to identify this section and with which to register options
+        'Sandbox Options',                  // Title to be displayed on the administration page
+        ['\SaberTTS\Admin\FieldGroupSettings', 'renderSettings'], // Callback used to render the description of the section
+        'general'                           // Page on which to add this section of options
+      );
+
+      add_settings_field(
+        'show_header',                      // ID used to identify the field throughout the theme
+        'Header',                           // The label to the left of the option interface element
+        ['\SaberTTS\Admin\FieldGroupSettings', 'renderField1'],   // The name of the function responsible for rendering the option interface
+        'general',                          // The page on which this option will be displayed
+        'general_settings_section',         // The name of the section to which this field belongs
+        array(                              // The array of arguments to pass to the callback. In this case, just a description.
+          'Activate this setting to display the header.'
+        )
+      );
+
+      register_setting(
+        'general',
+        'show_header'
+      );
 
       // init dashboard page
       $dashboard = new \SaberTTS\Admin\Dashboard();
