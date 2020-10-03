@@ -1,3 +1,3 @@
 [submodule "saber-core"]
-	path = saber-core
-	url = C:/Users/Casey/Sites/saber-tts.dev.cc/wp-content/plugins/saber-tts/vendor/saber-core
+	path = vendor/saber-core
+	url = git@github.com:eatbuildplay/saber-core.git
