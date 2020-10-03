@@ -29,6 +29,7 @@ class Plugin {
     spl_autoload_register([$this, 'autoload']);
 
     require_once(SABER_TTS_PATH.'vendor/aws/aws-autoloader.php');
+    require_once(SABER_TTS_PATH.'vendor/saber-core/loader.php');
 
     // move to autoloader
     require_once(SABER_TTS_PATH.'src/Polly.php');
@@ -54,9 +55,6 @@ class Plugin {
     add_action('admin_notices', [$this, 'adminNotices']);
 
     add_action('admin_menu', function() {
-
-      require_once( SABER_TTS_PATH . 'vendor/saber-core/dashboards/DashboardPage.php');
-      require_once( SABER_TTS_PATH . 'vendor/saber-core/settings/SettingsPage.php');
 
       // init dashboard page
       $dashboard = new \SaberTTS\Admin\Dashboard();
