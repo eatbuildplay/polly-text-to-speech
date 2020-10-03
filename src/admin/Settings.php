@@ -14,8 +14,8 @@ class Settings extends \SaberCore\Settings\SettingsPage {
 
   public function callback() {
 
-    $fgs = new FieldGroupSettings();
-    $fgs->render();
+    $fg = new SettingsFieldGroup();
+    $fg->render();
 
   }
 

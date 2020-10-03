@@ -29,6 +29,7 @@ class Plugin {
     spl_autoload_register([$this, 'autoload']);
 
     require_once(SABER_TTS_PATH.'vendor/aws/aws-autoloader.php');
+    require_once(SABER_TTS_PATH.'vendor/saber-core/loader.php');
 
     // move to autoloader
     require_once(SABER_TTS_PATH.'src/Polly.php');
@@ -60,6 +61,7 @@ class Plugin {
     // setup admin menu
     add_action('admin_menu', function() {
 
+<<<<<<< HEAD
       add_settings_section(
         'general_settings_section',         // ID used to identify this section and with which to register options
         'Sandbox Options',                  // Title to be displayed on the administration page
@@ -83,6 +85,8 @@ class Plugin {
         'show_header'
       );
 
+=======
+>>>>>>> c8769b47915926acb2857580ce3378da908b7c4f
       // init dashboard page
       $dashboard = new \SaberTTS\Admin\Dashboard();
       $dashboard->create();
