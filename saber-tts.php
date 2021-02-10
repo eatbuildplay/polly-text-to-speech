@@ -5,7 +5,7 @@
  * Plugin Name: Saber TTS
  * Plugin URI: https://eatbuildplay.com/plugins/saber-tts/
  * Description: Provides text-to-speech services with integration of AWS Polly text-to-speech service.
- * Version: 1.1.2
+ * Version: 1.2.0
  * Author: Casey Milne, Eat/Build/Play
  * Author URI: https://eatbuildplay.com/
  * License: GPL3
@@ -17,7 +17,7 @@ namespace SaberTTS;
 
 define( 'SABER_TTS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SABER_TTS_URL', plugin_dir_url( __FILE__ ) );
-define( 'SABER_TTS_VERSION', '1.1.1' );
+define( 'SABER_TTS_VERSION', '1.2.0' );
 
 class Plugin {
 
